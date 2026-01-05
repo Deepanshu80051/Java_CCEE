@@ -319,3 +319,35 @@ class Example {
         int z = 30;         // Stack
     }
 }
+
+
+🎯 What You MUST Revise:
+Priority 1 (Urgent):
+
+Variable storage locations
+
+Static → Method Area (1 copy)
+Instance → Heap (per object)
+Local → Stack (per method call, NO default)
+
+
+Multiple Inheritance
+
+Class extends 1 class only
+Class implements unlimited interfaces
+Interface extends unlimited interfaces
+
+
+JVM Memory
+
+Shared: Heap + Method Area
+Per Thread: Stack + PC Register
+Stack stores: Local vars + method calls + return address
+
+
+
+Priority 2:
+
+Bytecode is platform-independent
+Java slower due to interpretation + GC
+String pool in Heap (Java 7+, earlier in Method Area)
