@@ -256,15 +256,66 @@ Answer: b) double to int
 
 # Must Remember for C-CCEE:
 
-Java = Platform Independent, JVM = Platform Dependent
-JDK > JRE > JVM (containment hierarchy)
-Heap = Objects, Stack = Local variables
-Bootstrap > Extension > Application (ClassLoader hierarchy)
-Package → Import → Class → Variables → Methods
-Only one public class per file
-File name = Public class name
-8 primitive types (byte, short, int, long, float, double, char, boolean)
-Main method: public static void main(String[] args)
-Default integer = int, Default floating = double
-String primitive nahi hai
-JVM platform-dependent hai
+1.Java = Platform Independent, JVM = Platform Dependent
+2.JDK > JRE > JVM (containment hierarchy)
+3.Heap = Objects, Stack = Local variables
+4.Bootstrap > Extension > Application (ClassLoader hierarchy)
+5.Package → Import → Class → Variables → Methods
+6.Only one public class per file
+7.File name = Public class name
+8. primitive types (byte, short, int, long, float, double, char, boolean)
+9.Main method: public static void main(String[] args)
+10.Default integer = int, Default floating = double
+11.String primitive nahi hai
+12.JVM platform-dependent hai
+
+Q6: Java is?
+Tumhara: b (Purely interpreted)
+Correct: c (Both compiled and interpreted)
+Why: Java pehle compile hota hai (.java → .class bytecode), phir JVM interpret/JIT compile karta hai
+
+Q12: Java supports multiple inheritance through?
+Tumhara: d (Java doesn't support)
+Correct: b (Interfaces)
+Why: Class se multiple inheritance nahi, but Interfaces se possible hai
+
+class A implements B, C, D { } // Valid - multiple interfaces
+  class A extends B, C { }        // Invalid - multiple classes
+```
+
+### **Q20:** Dynamic loading of classes means?
+- **Tumhara:** a (Compile time)
+- **Correct:** b (Runtime when needed)
+- **Why:** Classes **runtime pe on-demand load** hoti hain, not compile time pe
+
+### **Q23:** Which memory area is shared among all threads?
+- **Tumhara:** d (Native Method Stack)
+- **Correct:** c (Heap)
+- **Why:** **Heap and Method Area** shared hain. Native Method Stack **thread-specific** hai
+
+### **Q26:** Static variables are stored in?
+- **Tumhara:** a (Heap)
+- **Correct:** c (Method Area)
+- **Why:** 
+  - **Heap** → Objects + instance variables
+  - **Method Area** → Static variables + class-level data
+  - **Stack** → Local variables
+
+---
+
+## 🎯 Key Points to Remember:
+
+### 1️⃣ **Java Compilation Process:**
+```
+.java file → javac (compiler) → .class (bytecode) → JVM (interpreter/JIT) → Machine code
+
+5️⃣ Memory Storage:
+
+class Example {
+    static int x = 10;      // Method Area
+    int y = 20;             // Heap (with object)
+    
+    void method() {
+        int z = 30;         // Stack
+    }
+}
