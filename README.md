@@ -352,8 +352,63 @@ Bytecode is platform-independent
 Java slower due to interpretation + GC
 String pool in Heap (Java 7+, earlier in Method Area)
 
-# Java Tokens
+## Java Tokens
 Smallest individual unit in a Java program..
+types :-..
+1. Reserved Keywords(52)
+2. Identifiers
+```
+// ✅ Valid
+int age;
+int _value;
+int $price;
+int age123;
+int myVariable;
 
-jo compiler recognize karta hai
+// ❌ Invalid
+int 123age;      // starts with digit
+int my-variable; // hyphen not allowed
+int class;       // keyword
+int my variable; // space not allowed
+```
+3. Literals (Constant Value)
+4. Operarors
+5. Punctuators 
 
+##  Declaring Variables & Methods
+ *. Variable Declaration
+  1. Local Variables:
+     // Must be initialized before use..
+    // No default value..
+    // Scope: within method only..
+ 2. Instance Variables
+    class Student {
+    String name;             // Instance variable
+    int age = 20;
+    // Has default value
+    // Scope: within object
+    // Created when object is created
+}
+3. Static Variable
+   class Counter {
+    static int count = 0;    // Static/Class variable
+    // Has default value
+    // Scope: entire class
+    // Created when class is loaded
+    // Shared by all objects
+}
+
+* byte, short, int, long ------------0
+* float, double-------------------0.0
+* char---------------'\u0000'
+* Reference types --------------null
+* Note: Local variables have NO default values
+   
+* Method Overloading
+  ```
+
+**Rules for Overloading:**
+- Same method name
+- Different parameter list (number or type)
+- Return type doesn't matter for overloading
+- Must be in same class or parent-child
