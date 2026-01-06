@@ -514,3 +514,20 @@ a) Yes  b) No  c) Only 1-D  d) Only primitive
 6 → b
 7 → b
 
+* Memory Areas:
+
+Heap: Objects, Instance variables..
+Method Area: Static variables, Class metadata..
+Stack: Local variables, Method calls..
+
+Q5: if (x = 20) ❌
+
+Tumhara: b (Nothing)..
+Correct: c (Compilation error)..
+Java mein: boolean context mein int nahi chal sakta (unlike C/C++)..
+
+Q11: Unknown iterations loop ❌
+
+Tumhara: b (while only)..
+Correct: d (Both while and do-while)..
+
