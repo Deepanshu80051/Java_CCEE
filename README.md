@@ -412,3 +412,105 @@ int my variable; // space not allowed
 - Different parameter list (number or type)
 - Return type doesn't matter for overloading
 - Must be in same class or parent-child
+
+Q: Static variable created when?
+a) Object creation  b) Class loading  c) Method call  d) JVM starts
+
+
+## 🎯 Key Points to Remember:
+```
+byte a = 10;
+byte b = 20;
+byte c = a + b;          // ❌ Error!..
+* In expressions, byte/short/char promoted to int
+ byte a = 10;
+byte b = 20;
+int c = a + b;           // ✅ Correct
+// OR
+byte c = (byte)(a + b);  // ✅ With casting
+
+byte b = 10;
+short s = 20;
+int i = 30;
+long l = 40L;
+
+// What is result type?
+b + s       // int
+b + i       // int
+i + l       // long
+l + 2.5     // double
+```
+## MCQ Focus - Type Compatibility:
+
+Q: Which requires explicit casting?
+a) int to long  b) double to int ✅ c) byte to int  d) char to int
+
+Q: What is output?
+   byte a = 10, b = 20;
+   byte c = a + b;
+a) 30  b) Compilation error ✅ c) 0  d) Runtime error
+
+Q: Type promotion: byte + short = ?
+a) byte  b) short  c) int ✅ d) long
+
+Q: Which is automatic conversion?
+a) double to int  b) int to double ✅ c) long to int  d) float to int
+
+Q: What happens: int x = 130; byte b = (byte)x;
+a) b = 130  b) Data loss may occur ✅ c) Error  d) b = 0
+
+* Short curcuit -> Logical Operator( && - both true , !! - ek bhi true)
+
+## LOOP
+1. // Infinite loop
+for (;;) {
+    // infinite
+}
+2. // No body
+for (int i = 0; i < 5; i++);  // Just increments
+3. For Each
+   for (type variable : array/collection) {
+    // loop body
+}
+Limitations:..
+
+* Cannot modify array elements
+* Cannot access index
+* Only forward traversal
+
+Q: switch can work with?
+a) float  b) long  c) String ✅ d) boolean
+Q: Enhanced for loop can?
+a) Modify elements  b) Access index  c) Traverse forward only ✅ d) All
+
+## Arrays
+int[] nums = new int[5];     // {0, 0, 0, 0, 0}
+double[] prices = new double[3];  // {0.0, 0.0, 0.0}
+boolean[] flags = new boolean[4]; // {false, false, false, false}
+String[] names = new String[3];   // {null, null, null}
+
+### MCQ Focus - Arrays:
+Q: Array index starts from?
+a) 0  b) 1  c) -1  d) Depends
+Q: arr.length is?
+a) Method  b) Property  c) Variable  d) Function
+Q: Default value of int array element?
+a) null  b) 0  c) 1  d) undefined
+Q: What is output?
+int[] arr = {1, 2, 3};
+System.out.println(arr[3]);
+a) 3  b) 0  c) null  d) Exception
+Q: 2-D array declaration?
+a) int[][] arr;  b) int[,] arr;  c) int arr[][];  d) Both a and c
+Q: Jagged array means?
+a) Square matrix  b) Unequal columns  c) 3-D array  d) Sorted array
+Q: Enhanced for loop can modify array?
+a) Yes  b) No  c) Only 1-D  d) Only primitive
+1 → a
+2 → b
+3 → b
+4 → d
+5 → d
+6 → b
+7 → b
+
