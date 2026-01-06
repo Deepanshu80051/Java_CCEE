@@ -351,3 +351,8 @@ Priority 2:
 Bytecode is platform-independent
 Java slower due to interpretation + GC
 String pool in Heap (Java 7+, earlier in Method Area)
+
+# Java Tokens
+Smallest individual unit in a Java program ..
+jo compiler recognize karta hai
+
