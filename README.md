@@ -531,3 +531,9 @@ Q11: Unknown iterations loop ❌
 Tumhara: b (while only)..
 Correct: d (Both while and do-while)..
 
+## OOPS
+1. Class memory nahi lena --- Logical entity
+2. object memory leta h  --- physical entity
+
+## Abstract vs Interface
+https://docs.google.com/document/d/1AJIemacjzREIiRbUp7hi0ZJM_1RmcdyA6KLAu0bkatI/edit?tab=t.0
