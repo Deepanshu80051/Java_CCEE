@@ -561,3 +561,431 @@ public class Main {
     }
 }
 ```
+
+## Comparison
+1. Primitive Comparison (==):
+```
+int a = 10;
+int b = 10;
+System.out.println(a == b);  // true (values compare)
+```
+2. Reference Comparison (== vs equals):
+```
+String s1 = new String("Hello");
+String s2 = new String("Hello");
+
+System.out.println(s1 == s2);      // false (different objects)
+System.out.println(s1.equals(s2)); // true (content same)
+
+// String literals (special case)
+String s3 = "Hello";
+String s4 = "Hello";
+System.out.println(s3 == s4);      // true (same object from pool)
+```
+## MCQ
+```
+Q: Static variable kitni baar create hota?
+A: Ek baar (class load pe)
+
+Q: Static method mein 'this' use kar sakte?
+A: Nahi ❌
+
+Q: main() method static kyun?
+A: JVM bina object ke call kare
+Q: Reference variable kaha store hota?
+A: Stack
+
+Q: Object kaha create hota?
+A: Heap
+
+Q: null reference ka kya matlab?
+A: Kisi object ko point nahi kar raha
+
+String s1 = null;
+String s2 = null;
+
+System.out.println(s1 == s2);      // ❓
+System.out.println(s1.equals(s2)); // ❓
+```
+
+**Answer:**
+```
+s1 == s2           → true ✅ (both null)
+s1.equals(s2)      → NullPointerException ❌
+
+int[] a = {1, 2, 3};
+int[] b = {1, 2, 3};
+
+System.out.println(a == b);        // ❓
+System.out.println(a.equals(b));   // ❓
+```
+
+**Answer:**
+```
+== → Reference compare, equals() → Content compare
+a == b           → false ❌ (different objects)
+a.equals(b)      → false ❌ (Object.equals checks reference)
+
+// Content compare:
+Arrays.equals(a, b)  → true ✅
+```
+```
+10. Inheritance - Constructor Chain
+javaclass A {
+    A() { System.out.print("A"); }
+}
+
+class B extends A {
+    B() { System.out.print("B"); }
+}
+
+class C extends B {
+    C() { System.out.print("C"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        C c = new C();
+    }
+}
+Output: ABC ✅ (not CBA!)
+
+-----------------
+abstract class A {
+    abstract void m1();       // ✅ OK
+    // abstract void m2() { } // ❌ ERROR - body not allowed
+}
+
+class B extends A {
+    // void m1() { }          // ❌ ERROR - must be public (or higher)
+    public void m1() { }      // ✅ OK
+}
+```
+```
+class Student {
+    String name;
+    
+    Student(String name) {
+        this.name = name;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Student s = new Student();  ❌ ERROR - no default constructor
+        Student s = new Student("Rahul");  // ✅ OK
+    }
+}
+```
+1. Pass By value ----Primitives
+
+```
+public class Main {
+    static void change(int x) {
+        x = 100;
+        System.out.println("Inside method: " + x);  // 100
+    }
+    
+    public static void main(String[] args) {
+        int a = 10;
+        change(a);
+        // Output: Inside method: 100
+        
+        System.out.println("Outside method: " + a);  // 10 (unchanged!)
+    }
+}
+```
+
+**Memory:**
+```
+Stack:
+main() → a = 10
+change() → x = 10 (copy)
+         → x = 100 (local change)
+         
+a remains 10 ✅
+```
+2. Pass by Reference Value (Objects)
+```
+class Student {
+    int marks;
+}
+
+public class Main {
+    static void change(Student s) {
+        s.marks = 100;
+        System.out.println("Inside method: " + s.marks);  // 100
+    }
+    
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.marks = 50;
+        
+        change(s1);
+        // Output: Inside method: 100
+        
+        System.out.println("Outside method: " + s1.marks);  // 100 (changed!)
+    }
+}
+```
+
+**Memory:**
+```
+Stack:                  Heap:
+main() → s1 → ──┐      ┌──────────┐
+change() → s → ─┴─────→│ marks=100│
+                        └──────────┘
+Both point to SAME object!
+```
+## Association, Aggregation, Composition
+https://docs.google.com/document/d/1AJIemacjzREIiRbUp7hi0ZJM_1RmcdyA6KLAu0bkatI/edit?tab=t.sw0f1bbugzka
+
+## Diamond Problem solution
+```
+interface A {
+    default void show() { System.out.println("A"); }
+}
+
+interface B {
+    default void show() { System.out.println("B"); }
+}
+
+class C implements A, B {
+    public void show() { // ✅ Override zaroori
+        A.super.show(); // Specific interface call
+    }
+}
+```
+## Ypcasting/Downcasting
+```
+Upcasting automatic, Downcasting manual
+instanceof se check karo before downcasting
+Wrong downcasting = ClassCastException
+
+```
+## Enum
+Special class for constants
+```
+enum Day {
+    MONDAY, TUESDAY, WEDNESDAY // Constants
+}
+
+Day d = Day.MONDAY;
+```
+**Default ko package-private bhi bolte hain**
+```
+import java.util.ArrayList;
+import java.util.*; // All classes in util
+
+ArrayList<Integer> list = new ArrayList<>();
+---------------------------------
+import static java.lang.Math.PI;
+import static java.lang.Math.*; // All static members
+
+System.out.println(PI);      // Direct use (no Math.PI)
+System.out.println(sqrt(4)); // Direct use (no Math.sqrt)
+```
+## Constructor Chaining
+Ek constructor se dusra constructor call karna
+Same Class (this)
+```
+javaclass Student {
+    String name;
+    int age;
+    
+    Student() {
+        this("Unknown", 0); // Constructor call
+    }
+    
+    Student(String name) {
+        this(name, 18); // Constructor call
+    }
+    
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+Rules:
+
+this() first line me hona chahiye
+Ek constructor me sirf ek this() call
+```
+class A {
+    A() {
+        this(5);
+        super(); // ❌ ERROR - dono ek sath nahi
+    }
+    A(int x) { }
+}
+```
+## Protected Access Rule
+```
+Same package: Kisi bhi tarah access ✅
+Different package: Sirf inheritance se ✅
+Through parent object: ❌
+
+// p1.Parent
+package p1;
+public class Parent {
+    protected int x = 10;
+}
+
+// p2.Child
+package p2;
+import p1.Parent;
+class Child extends Parent {
+    void show() {
+        System.out.println(x); // ✅ OK (inheritance)
+        
+        Parent p = new Parent();
+        System.out.println(p.x); // ❌ ERROR
+    }
+}
+-------------------------
+// File1.java
+package p1;
+class A { // default class
+    void show() { } // default method
+}
+
+// File2.java
+package p2;
+import p1.A; // ❌ ERROR - default class import nahi
+```
+## Requesting Garbage collector
+1. System.gc(); or Runtime.getRuntime().gc() // GC ko request (suggestion)// Request hai, guarantee nahi
+## finalize() Method
+1. Object destroy hone se pehle ek baar call hota (cleanup activity)
+2. 1 baar count hoga max
+3. who call - GC thread
+4. no garantee= call hoye na na
+```
+// A)
+public void finalize() { } // ❌ public nahi (protected)
+
+// B)
+protected void finalize() throws Exception { } // ✅ OK
+
+// C)
+protected final void finalize() { } // ✅ OK (final allowed)
+
+// D)
+static void finalize() { } // ❌ static nahi
+--------------------------------------------
+Test t = new Test();
+t = null;
+System.gc();
+t = new Test(); // Ye wala naya object
+System.gc();
+// finalize() maximum 2 baar (har object ke liye ek)
+------------------------------------------------
+class Node {
+    Node next;
+}
+Node n1 = new Node();
+Node n2 = new Node();
+n1.next = n2;
+n2.next = n1;
+n1 = null;
+n2 = null;
+// Answer: 2 objects eligible (island)
+--------------------------------
+String s1 = new String("A");
+String s2 = new String("B");
+s1 = s2;
+s2 = null;
+// Answer: 1 ("A" object eligible)
+```
+## Wrapper Classes
+Primitive types ko objects me convert karna...
+char,boolean - parent class(object)
+```
+Integer i1 = 100;
+Integer i2 = 100;
+System.out.println(i1 == i2); // ✅ true (cache)
+
+Integer i3 = 200;
+Integer i4 = 200;
+System.out.println(i3 == i4); // ❌ false (no cache)
+System.out.println(a.equals(b));   // true
+ Cache Range: -128 to 127 (constant pool)
+```
+```
+StringBuffer sb = new StringBuffer("Hello");
+
+// Append (add at end)
+sb.append(" World"); // "Hello World"
+
+// Insert
+sb.insert(5, " Java"); // "Hello Java World"
+
+// Delete
+sb.delete(5, 10); // "Hello World"
+
+// Replace
+sb.replace(0, 5, "Hi"); // "Hi World"
+
+// Reverse
+sb.reverse(); // "dlroW iH"
+
+// Capacity
+sb.capacity(); // Default: 16 + length
+
+// Multi-threading
+StringBuffer sb = new StringBuffer(); // ✅ Thread-safe
+
+// Single thread
+StringBuilder sb = new StringBuilder(); // ✅ Faster
+
+```
+## Object Class
+class Student { } 
+// Internally: class Student extends Object { }
+1. toString() Method   -- println(object) internally toString() call karta
+
+```
+deafult
+class Student {
+    int id;
+    String name;
+}
+
+Student s = new Student();
+System.out.println(s); // Student@15db9742 (classname@hashcode)
+System.out.println(s.toString()); // Same
+```
+2. equals() method
+```
+Student s1 = new Student(1, "Ram");
+Student s2 = new Student(1, "Ram");
+
+System.out.println(s1 == s2);        // false (reference compare)
+System.out.println(s1.equals(s2));   // false (default = ==)
+```
+## data & calendar -- java.util.data
+  ```
+--------------------------
+override string
+class Student {
+    int id;
+    String name;
+    
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    
+    @Override
+    public String toString() {
+        return "Student[id=" + id + ", name=" + name + "]";
+    }
+}
+
+Student s = new Student(1, "Ram");
+System.out.println(s); // Student[id=1, name=Ram]
+
+Calendar cal = Calendar.getInstance();
+cal.set(Calendar.MONTH, 0); // January (0-based)
+```
