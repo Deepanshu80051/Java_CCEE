@@ -537,3 +537,27 @@ Correct: d (Both while and do-while)..
 
 ## Abstract vs Interface
 https://docs.google.com/document/d/1AJIemacjzREIiRbUp7hi0ZJM_1RmcdyA6KLAu0bkatI/edit?tab=t.0
+
+```
+class Demo {
+    int x = 10;
+    
+    void display() {
+        System.out.println("Display");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Demo d1 = new Demo();
+        d1.display();  // Display ✅
+        
+        Demo d2 = null;  // Null reference
+        // d2.display();    // NullPointerException ❌
+        
+        if(d2 != null) {
+            d2.display();  // Safe
+        }
+    }
+}
+```
