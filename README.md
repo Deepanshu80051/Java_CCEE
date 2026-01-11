@@ -1256,3 +1256,79 @@ DataInput, ObjectInput, FileFilter are all in java.io
 प्रश्न: Exception for array with negative size?
 आपका उत्तर: a (IllegalArrayException)
 सही उत्तर: d (NegativeArraySizeException)
+====================================
+System.out.println(0.0 == -0.0);  // true
+===========================
+17. Which of the following may have null value?
+ 1. collection
+ 2. List
+ 3. Map
+ 4. Set
+ Correct Answer : 3
+
+===========================
+Cause() and getCause() are methods of which class.
+ 1. Throwable
+
+==============================================
+6. Inserialization object is stored in form of?
+ 1. byte
+=====================================
+Q93. Read object method reconstructs object at the time of retriving from the
+file.
+
+ 2. Byte by Byte
+==========================================
+90. Date class implements following interface
+ 1. serialiazable
+ 2. comparable
+ 3. clonable
+ 4. all
+ Correct Answer : 4
+====================================
+✅ Reserved literals in Java are:
+
+true
+
+false
+
+null
+==========================
+
+ InterThread Communication is posiible using which of the methods?
+ 1. wait()
+ 2. notifyall()
+ 3. notify()
+ 4. all of the above
+ Correct Answer : 4
+=============================
+boolean ka object create nhi kr sakte
+======================================
+all wrapper classes are final
+ Correct Answer :
+=============================
+Q38. Which of these is interface in the collection framework.Select the
+correct answers.
+ 1. Hash Map
+ 2. Array List
+ 3. Sorted Map
+ 4. Tree Map
+ Correct Answer : 3
+==================================
+10. Serialization
+Basic Rules
+javaclass MyClass implements Serializable {
+    transient int x;      // NOT serialized
+    static int y;         // NOT serialized
+    int z;                // Serialized
+}
+==========================
+IS-A (Inheritance)
+javaclass Dog extends Animal { }
+// Dog IS-A Animal
+HAS-A (Composition)
+javaclass Car {
+    Engine engine;  // Car HAS-A Engine
+}
+```
+```
