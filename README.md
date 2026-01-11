@@ -1356,3 +1356,10 @@ d) All of the mentioned
 What kind of thread is the Garbage collector thread?
 
 Daemon thread
+======================
+```
+Which choice demonstrates a valid way to create a reference to a static function of
+another class?
+
+Function<Integer, Integer> funcReference = MyClass::myFunction;
+
