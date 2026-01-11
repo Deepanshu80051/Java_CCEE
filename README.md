@@ -1362,4 +1362,7 @@ Which choice demonstrates a valid way to create a reference to a static function
 another class?
 
 Function<Integer, Integer> funcReference = MyClass::myFunction;
-
+=============================
+A waiter can be woken up by another Thread calling notification whereas a sleeper
+cannot.
+```
