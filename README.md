@@ -1039,3 +1039,170 @@ public class Main {
     }
 }
 ```
+```
+class Shared {
+    synchronized void consume() throws InterruptedException {
+        System.out.println("Waiting...");
+        wait(); // Release lock and wait
+        System.out.println("Resumed");
+    }
+    
+    synchronized void produce() {
+        System.out.println("Producing...");
+        notify(); // Wake up one waiting thread
+    }
+}
+
+Shared s = new Shared();
+
+// Thread 1
+new Thread(() -> {
+    try { s.consume(); } catch(Exception e) {}
+}).start();
+
+Thread.sleep(1000);
+
+// Thread 2
+new Thread(() -> s.produce()).start();
+
+// Output:
+// Waiting...
+// Producing...
+// Resumed
+```
+```
+void method() {
+    wait(); // ❌ IllegalMonitorStateException (no synchronized)
+}
+
+synchronized void method() {
+    wait(); // ✅ OK
+}
+```
+## 5. Generics Introduction
+Type-safe collections - compile time pe type check
+```
+ArrayList<String> list = new ArrayList<String>();
+list.add("Java");
+list.add(10); // ❌ Compile error (type safe)
+
+String s = list.get(0); // No casting needed
+------------------------
+without
+ArrayList list = new ArrayList();
+list.add("Java");
+list.add(10); // ✅ Allowed (Object type)
+
+String s = (String) list.get(0); // Manual casting
+String x = (String) list.get(1); // ❌ Runtime error (ClassCastException)
+```
+```
+class Util {
+    // Generic method
+    static <T> void print(T item) {
+        System.out.println(item);
+    }
+    
+    // Generic with return
+    static <T> T getFirst(T[] arr) {
+        return arr[0];
+    }
+}
+
+// Usage
+Util.print("Java");   // T = String
+Util.print(100);      // T = Integer
+
+String[] arr = {"A", "B"};
+String first = Util.getFirst(arr);
+```
+MCQ Trap
+```
+<T> void method(T item) { } // ✅ Generic method
+
+void method(T item) { }     // ❌ T undefined (not generic)
+```
+## Wildcards
+Unknown type represent karna  -- ?
+```
+void print(List<?> list) { // Any type
+    for(Object obj : list) {
+        System.out.println(obj);
+    }
+}
+
+List<String> strList = new ArrayList<>();
+List<Integer> intList = new ArrayList<>();
+print(strList); // ✅
+print(intList); // ✅
+```
+##  Metadata
+Data about data - extra information about code
+```
+java@Override    // Metadata
+@Deprecated  // Metadata
+@SuppressWarnings("unchecked")
+----------------------------------
+Built-in Annotations:
+
+@Override - Method override check
+@Deprecated - Old/outdated feature
+@SuppressWarnings - Warning ignore
+@FunctionalInterface - Single abstract method
+```
+MCQ
+```
+synchronized void method() { }
+// Lock kis pe? → this (object)
+
+synchronized static void method() { }
+// Lock kis pe? → Class
+---------------------------------------
+void method() {
+    wait(); // ❌ IllegalMonitorStateException
+}
+
+synchronized void method() {
+    wait(); // ✅ OK
+}
+-------------------------------
+List<Integer> list = new ArrayList<>();
+list.add(10);
+list.add("Java"); // ❌ Compile error (type safe)
+---------------------------------------
+List<? extends Number> list = new ArrayList<Integer>();
+list.add(10); // ❌ Cannot add  // Isme compile-time error aayega ✅
+
+List<? super Integer> list = new ArrayList<Number>();
+list.add(10); // ✅ Can add
+-------------------------------------
+Class<?> c = String.class;
+System.out.println(c.getName()); // java.lang.String
+```
+HINT
+```
+
+## **Quick Formula Sheet**
+
+### **Synchronization**
+- Method = Lock on **object** (this)
+- Static method = Lock on **Class**
+- Block = Lock on **specified object**
+==========================================
+### **wait/notify**
+- `wait()` = Release lock + WAIT state
+- `notify()` = Wake one thread
+- `notifyAll()` = Wake all threads
+- **synchronized block/method me hi** use
+====================================
+### **Generics**
+- `<T>` = Type parameter
+- Type safety + No casting
+- Runtime pe type **erase** (type erasure)
+=============================================
+### **Wildcards**
+
+? extends T → Read (Producer)
+? super T   → Write (Consumer)
+?           → Read as Object
+```
