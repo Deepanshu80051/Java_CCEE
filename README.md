@@ -1206,3 +1206,53 @@ HINT
 ? super T   → Write (Consumer)
 ?           → Read as Object
 ```
+MCQ
+```
+int arr[] = new int[5];
+System.out.print(arr);
+---(Class name@ hashcode in hexadecimal form)  -- [I@15db9742
+=======================================
+प्रश्न: Which class extends InputStream class?
+आपका उत्तर: a (ObjectStream)
+सही उत्तर: b (ObjectInputStream)
+====================================
+प्रश्न: How many methods does Serializable have?
+आपका उत्तर: 1
+सही उत्तर: d (0)
+===========================================
+प्रश्न: Which method is NOT used in Serialization/DeSerialization?
+आपका उत्तर: b (readExternal)
+सही उत्तर: c (readWriteObject)
+समझाइए:
+
+readWriteObject() ऐसा कोई method नहीं है
+readWriteObject() method does not exist
+Valid methods हैं:
+
+readObject() - deserialization के लिए
+writeObject() - serialization के लिए
+readExternal() - Externalizable interface का
+writeExternal() - Externalizable interface का
+=============================================
+प्रश्न: Which is an interface for control over serialization and deserialization?
+आपका उत्तर: d (ObjectInput)
+सही उत्तर: b (Externalization)
+===========================================
+प्रश्न: How to use environment properties in the class?
+आपका उत्तर: c (@Property)
+सही उत्तर: a (@Autowired)
+===============================================
+Question 22:
+प्रश्न: Which class is a superclass of all other classes?
+आपका उत्तर: c (System)
+सही उत्तर: d (Object)
+===============================================
+प्रश्न: Which method can set the out stream to OutputStream?
+आपका उत्तर: a (setStream)
+सही उत्तर: c (setOut)
+==========================================
+DataInput, ObjectInput, FileFilter are all in java.io
+===================================
+प्रश्न: Exception for array with negative size?
+आपका उत्तर: a (IllegalArrayException)
+सही उत्तर: d (NegativeArraySizeException)
