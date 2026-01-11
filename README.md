@@ -1351,3 +1351,8 @@ d) All of the mentioned
 7. stream proposed by java8 - sequential and parallel
 8. green thread nhi hota
 9. UTC time- Instant.now()
+
+======================================
+What kind of thread is the Garbage collector thread?
+
+Daemon thread
