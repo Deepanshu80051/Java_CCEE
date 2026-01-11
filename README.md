@@ -1332,3 +1332,22 @@ javaclass Car {
 }
 ```
 ```
+byte c = (byte)295.04 → 295 % 256 = 39
+byte d = (byte)300 → 300 % 256 = 44
+Byte range: -128 to 127, so values wrap around
+```
+1. Upcasting--- subtype to superty
+2. "Both StringBuffer & StringBuilder are mutable"
+3. Which process occurs automatically in the Java runtime system?
+```
+a) Serialization ✅
+b) Garbage Collection
+c) File Filtering
+d) All of the mentioned
+```
+4. Which of the following class can read the data in the form of characters from a file?  ---------- FileReader
+5. return type of lamda expression------- function
+6. -xms- initial memory and -xmx- maximum memory
+7. stream proposed by java8 - sequential and parallel
+8. green thread nhi hota
+9. UTC time- Instant.now()
