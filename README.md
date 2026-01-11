@@ -989,3 +989,53 @@ System.out.println(s); // Student[id=1, name=Ram]
 Calendar cal = Calendar.getInstance();
 cal.set(Calendar.MONTH, 0); // January (0-based)
 ```
+## Thread
+1. join
+```
+public class Main {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(() -> {
+            for(int i = 1; i <= 5; i++) {
+                System.out.println("Thread-1: " + i);
+                try { Thread.sleep(500); } 
+                catch(InterruptedException e) { }
+            }
+        });
+        
+        t1.start();
+        
+        try {
+            t1.join();  // Main waits for t1 to finish
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Main thread finished");
+    }
+}
+```
+
+**Output:**
+```
+Thread-1: 1
+Thread-1: 2
+Thread-1: 3
+Thread-1: 4
+Thread-1: 5
+Main thread finished  ← Prints AFTER t1 completes
+```
+
+```
+public class Main {
+    public static void main(String[] args) {
+        // Main thread priority = 5
+        
+        Thread t1 = new Thread(() -> {
+            System.out.println("T1: " + 
+                Thread.currentThread().getPriority());
+        });
+        
+        t1.start();  // T1 inherits priority 5 from main
+    }
+}
+```
