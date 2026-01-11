@@ -1374,5 +1374,12 @@ static ✅
 protected
 public
 void
+========================================
+Which functional interfaces does Java provide to serve as data types for lambda
+expressions?
 
+Observer, Observable
+Collector, Builder
+Filter, Map, Reduce
+Consumer, Predicate, Supplier ✅
 ```
