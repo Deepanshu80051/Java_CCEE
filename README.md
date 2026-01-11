@@ -1365,4 +1365,14 @@ Function<Integer, Integer> funcReference = MyClass::myFunction;
 =============================
 A waiter can be woken up by another Thread calling notification whereas a sleeper
 cannot.
+====================================
+Q114. Which keyword would not be allowed here?
+class Unicorn {
+_____ Unicorn(){}
+}
+static ✅
+protected
+public
+void
+
 ```
